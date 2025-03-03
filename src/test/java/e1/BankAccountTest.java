@@ -8,12 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BankAccountTest {
 
+    private BankAccountFactory bankAccountFactory;
     private BankAccount accountSilver;
     private BankAccount accountGold;
 
     @BeforeEach
     void init(){
-        this.accountSilver = new DecoratorBankAccount(new SilverBankAccount());
+        this.bankAccountFactory = new BankAccountFactory();
+        this.accountSilver = this.bankAccountFactory.createSilverBankAccount();
         this.accountGold = new GoldBankAccount();
     }
 
