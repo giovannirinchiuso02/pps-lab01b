@@ -9,6 +9,7 @@ public class LogicsImpl implements Logics {
 	private final Random random = new Random();
 	private final int size;
 	KnightHit knightHit = new KnightHit(this);
+	CheckPawnAndKnightAreSet checkPawnAndKnightAreSet = new CheckPawnAndKnightAreSet(this);
 
     public LogicsImpl(final int size){
     	this.size = size;
@@ -25,9 +26,9 @@ public class LogicsImpl implements Logics {
 	}
     
 	private final Pair<Integer,Integer> randomEmptyPosition(){
-    	Pair<Integer,Integer> pos = new Pair<>(this.random.nextInt(size),this.random.nextInt(size));
+    	Pair<Integer,Integer> pos = new Pair<> (this.random.nextInt(size), this.random.nextInt(size));
     	// the recursive call below prevents clash with an existing pawn
-    	return this.pawn!=null && this.pawn.equals(pos) ? randomEmptyPosition() : pos;
+    	return this.pawn != null && this.pawn.equals(pos) ? randomEmptyPosition() : pos;
     }
     
 	@Override
@@ -37,12 +38,12 @@ public class LogicsImpl implements Logics {
 
 	@Override
 	public boolean hasKnight(int row, int col) {
-		return this.knight.equals(new Pair<>(row,col));
+		return this.checkPawnAndKnightAreSet.hasKnight(row, col);
 	}
 
 	@Override
 	public boolean hasPawn(int row, int col) {
-		return this.pawn.equals(new Pair<>(row,col));
+		return this.checkPawnAndKnightAreSet.hasPawn(row, col);
 	}
 
 	@Override
