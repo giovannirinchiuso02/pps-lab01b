@@ -1,10 +1,10 @@
 package e2;
 
-public class CheckPawnAndKnightAreSet {
+public class CheckCharactersAreSet implements CheckCaracters{
 
     Logics logics;
 
-    public CheckPawnAndKnightAreSet(Logics logics) {
+    public CheckCharactersAreSet(Logics logics) {
         this.logics = logics;
     }
 
@@ -16,6 +16,7 @@ public class CheckPawnAndKnightAreSet {
     public boolean hasPawn(int row, int col) {
         return this.logics.getPawn().equals(new Pair<>(row, col));
     }
+
 
 
 }

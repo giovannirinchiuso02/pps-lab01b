@@ -8,8 +8,8 @@ public class LogicsImpl implements Logics {
 	private Pair<Integer,Integer> knight;
 	private final Random random = new Random();
 	private final int size;
-	KnightHit knightHit = new KnightHit(this);
-	CheckPawnAndKnightAreSet checkPawnAndKnightAreSet = new CheckPawnAndKnightAreSet(this);
+	KnightHit knightHit = new KnightHitImpl(this);
+	CheckCharactersAreSet checkCharactersAreSet = new CheckCharactersAreSet(this);
 
     public LogicsImpl(final int size){
     	this.size = size;
@@ -38,12 +38,12 @@ public class LogicsImpl implements Logics {
 
 	@Override
 	public boolean hasKnight(int row, int col) {
-		return this.checkPawnAndKnightAreSet.hasKnight(row, col);
+		return this.checkCharactersAreSet.hasKnight(row, col);
 	}
 
 	@Override
 	public boolean hasPawn(int row, int col) {
-		return this.checkPawnAndKnightAreSet.hasPawn(row, col);
+		return this.checkCharactersAreSet.hasPawn(row, col);
 	}
 
 	@Override
