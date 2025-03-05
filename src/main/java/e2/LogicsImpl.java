@@ -8,11 +8,13 @@ public class LogicsImpl implements Logics {
 	private Pair<Integer,Integer> knight;
 	private final Random random = new Random();
 	private final int size;
+	KnightHit knightHit = new KnightHit(this);
 
     public LogicsImpl(final int size){
     	this.size = size;
         this.pawn = this.randomEmptyPosition();
         this.knight = this.randomEmptyPosition();
+
     }
 
 
@@ -30,17 +32,7 @@ public class LogicsImpl implements Logics {
     
 	@Override
 	public boolean hit(int row, int col) {
-		if (row<0 || col<0 || row >= this.size || col >= this.size) {
-			throw new IndexOutOfBoundsException();
-		}
-		// Below a compact way to express allowed moves for the knight
-		int x = row-this.knight.getX();
-		int y = col-this.knight.getY();
-		if (x!=0 && y!=0 && Math.abs(x)+Math.abs(y)==3) {
-			this.knight = new Pair<>(row,col);
-			return this.pawn.equals(this.knight);
-		}
-		return false;
+		return knightHit.hit(row, col);
 	}
 
 	@Override
@@ -61,5 +53,15 @@ public class LogicsImpl implements Logics {
 	@Override
 	public Pair<Integer, Integer> getKnight() {
 		return this.knight;
+	}
+
+	@Override
+	public void setKnightPosition(int row, int col) {
+		this.knight = new Pair<>(row,col);
+	}
+
+	@Override
+	public int getSize() {
+		return this.size;
 	}
 }

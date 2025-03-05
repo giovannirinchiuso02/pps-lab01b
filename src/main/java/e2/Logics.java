@@ -34,4 +34,8 @@ public interface Logics{
      * @return knight position
      */
     Pair<Integer, Integer> getKnight();
+
+    void setKnightPosition(final int row, final int col);
+
+    int getSize();
 }
