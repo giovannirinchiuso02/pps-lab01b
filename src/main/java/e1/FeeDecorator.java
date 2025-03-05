@@ -2,7 +2,7 @@ package e1;
 
 public class FeeDecorator extends DecoratorBankAccount{
 
-    private int fee = 1;
+    private final int fee;
 
     public FeeDecorator(BankAccount bankAccount, final int fee) {
         super(bankAccount);

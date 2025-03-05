@@ -2,6 +2,7 @@ package e1;
 
 import org.junit.jupiter.api.Test;
 
+import static e1.BankAccountFactory.SILVER_FEE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,7 +20,7 @@ public class SilverBankAccountTest extends AbstractBankAccountTest{
     public void testCanWithdraw() {
         super.bankAccount.deposit(INITIAL_DEPOSIT);
         super.bankAccount.withdraw(INITIAL_WITHDRAWAL);
-        assertEquals(799, this.bankAccount.getBalance());
+        assertEquals(INITIAL_DEPOSIT - (INITIAL_WITHDRAWAL + SILVER_FEE) , this.bankAccount.getBalance());
     }
 
     @Test
